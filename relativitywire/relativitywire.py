@@ -47,18 +47,6 @@ class NonRelativisticWireScene(Scene):
             e_brace.add_updater(lambda m, dt: update_e_brace(m))
             self.add(e_brace, e_label)
 
-        # Use two adjacent protons on the wire
-        if len(protons) >= 3:
-            p_left = protons[1]
-            p_right = protons[2]
-            p_brace = BraceBetweenPoints(p_left.get_center(), p_right.get_center(), direction=UP)
-            p_label = Tex("d").scale(0.3)
-            p_label.add_updater(lambda m: m.next_to(p_brace, UP, buff=0.1))
-
-            def update_p_brace(m):
-                m.become(BraceBetweenPoints(p_left.get_center(), p_right.get_center(), direction=UP))
-            p_brace.add_updater(lambda m, dt: update_p_brace(m))
-            self.add(p_brace, p_label)
 
 
             
